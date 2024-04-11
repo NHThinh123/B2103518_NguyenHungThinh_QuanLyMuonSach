@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 
+const booksRouter = require("./app/routes/book.route");
+
 // const ApiError = require("./app/api-error");
 
 const app = express();
@@ -12,7 +14,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Chào mừng đến với website mượn sách online" });
 });
 
-// // app.use("/api/contacts", contactsRouter);
+app.use("/api/books", booksRouter);
 
 // // handle 404 response
 // app.use((req, res, next) => {

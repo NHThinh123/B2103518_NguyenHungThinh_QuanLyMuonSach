@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Chào mừng đến với website mượn sách online" });
 });
 
-app.use("/api/books", booksRouter);
+app.use("/api/bookManager", booksRouter);
 
 // handle 404 response
 app.use((req, res, next) => {

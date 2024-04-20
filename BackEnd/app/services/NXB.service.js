@@ -1,33 +1,29 @@
 const { ObjectId } = require("mongodb");
 
-class BookService {
+class NXBService {
   constructor(client) {
-    this.Book = client.db().collection("KhoSach");
+    this.NXB = client.db().collection("KhoNXB");
   }
   //dinh nghia cac phuong thuc truy xuat csdl su dung mongodb api
-  extractBookData(payload) {
-    const book = {
-      MASACH: payload.MASACH,
-      TENSACH: payload.TENSACH,
-      DONGIA: payload.DONGIA,
-      SOQUYEN: payload.SOQUYEN,
-      NAMXUATBAN: payload.NAMXUATBAN,
-      MANHAXUATBAN: payload.MANHAXUATBAN,
-      TACGIA: payload.TACGIA,
+  extractNXBData(payload) {
+    const nxb = {
+      MaNXB: payload.MaNXB,
+      TenNXB: payload.TenNXB,
+      diaChi: payload.diaChi,
     };
     //remove undefined fields
     //kiem tra co s o object voi key
-    Object.keys(book).forEach(
-      (key) => book[key] === undefined && delete book[key]
+    Object.keys(nxb).forEach(
+      (key) => nxb[key] === undefined && delete nxb[key]
     );
-    return book;
+    return nxb;
   }
 
   async create(payload) {
-    const book = this.extractBookData(payload);
-    const result = await this.Book.findOneAndUpdate(
-      book,
-      { $set: { MANHAXUATBAN: book.MANHAXUATBAN } },
+    const nxb = this.extractNXBData(payload);
+    const result = await this.NXB.findOneAndUpdate(
+      nxb,
+      { $set: {} },
       {
         returnDocument: "after",
         upsert: true,
@@ -37,7 +33,7 @@ class BookService {
   }
 
   async find(filter) {
-    const cursor = await this.Book.find(filter);
+    const cursor = await this.NXB.find(filter);
     return await cursor.toArray();
   }
 
@@ -48,7 +44,7 @@ class BookService {
   }
 
   async findById(id) {
-    return await this.Book.findOne({
+    return await this.NXB.findOne({
       _id: ObjectId.isValid(id) ? new ObjectId(id) : null,
     });
   }
@@ -58,8 +54,8 @@ class BookService {
       _id: ObjectId.isValid(id) ? new ObjectId(id) : null,
     };
 
-    const update = this.extractBookData(payload);
-    const result = await this.Book.findOneAndUpdate(
+    const update = this.extractNXBData(payload);
+    const result = await this.NXB.findOneAndUpdate(
       filter,
       { $set: update },
       { returnDocument: "after" }
@@ -68,7 +64,7 @@ class BookService {
     return result;
   }
   async delete(id) {
-    const result = await this.Book.findOneAndDelete({
+    const result = await this.NXB.findOneAndDelete({
       _id: ObjectId.isValid(id) ? new ObjectId(id) : null,
     });
     return result;
@@ -86,4 +82,4 @@ class BookService {
   // }
 }
 
-module.exports = BookService;
+module.exports = NXBService;

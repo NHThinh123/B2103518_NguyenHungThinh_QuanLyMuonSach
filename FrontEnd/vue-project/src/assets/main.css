@@ -1,9 +1,6 @@
-@import './base.css';
+@import "./base.css";
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
   font-weight: normal;
 }
 
@@ -17,19 +14,65 @@ a,
 
 @media (hover: hover) {
   a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
+    background-color: hsla(160, 100%, 37%, 0);
   }
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
+.background-img {
+  background-image: url("/image/hinh-nen-laptop-anime-min.jpg");
+  display: flex;
+  justify-content: space-between;
+  background-size: cover;
+  background-position: center;
+}
+.header {
+  height: 120px;
+}
+.header-left {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.navbar-custom-brand {
+  font-weight: 700;
+  font-size: 28px;
+  color: #f4ce14;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+  text-decoration: none;
+}
+.navbar-custom-brand:hover {
+  color: #f4ce14;
+}
+.nav-custom-item {
+  color: #f4ce14;
+  font-weight: 600;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+.header-right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: flex-end;
+  transform: translateY(-15%);
+  align-items: flex-end;
+}
+.info-icon {
+  border-radius: 40px;
+  height: 60px;
+  width: 60px;
+}
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+.btn-search {
+  background-color: #00000000;
+  color: #f4ce14;
+  border: solid 1px #f4ce14;
+}
+.btn-search:hover {
+  background-color: #f4ce14;
+  color: #ffffff;
+}
+.search {
+  max-width: 200px;
 }

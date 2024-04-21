@@ -5,7 +5,7 @@ const ApiError = require("../api-error");
 
 //
 exports.createBook = async (req, res, next) => {
-  if (!req.body?.MASACH) {
+  if (!req.body?.bookId) {
     return next(new ApiError(400, "Không được để trống mã sách"));
   }
 

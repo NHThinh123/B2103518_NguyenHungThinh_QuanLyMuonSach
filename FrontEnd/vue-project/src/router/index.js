@@ -1,10 +1,10 @@
 import { createWebHistory, createRouter } from "vue-router";
-import ContactBook from "@/views/ContactBook.vue";
+import Login from "@/views/Login.vue";
 const routes = [
   {
     path: "/",
-    name: "contactbook",
-    component: ContactBook,
+    name: "login",
+    component: Login,
   },
   {
     path: "/:pathMatch(.*)*",
@@ -15,6 +15,12 @@ const routes = [
     path: "/book/:id",
     name: "book.edit",
     component: () => import("@/views/BookEdit.vue"),
+    props: true, // Truyền các biến trong $route.params vào làm props
+  },
+  {
+    path: "/book",
+    name: "contactbook",
+    component: () => import("@/views/ContactBook.vue"),
     props: true, // Truyền các biến trong $route.params vào làm props
   },
   {
@@ -39,6 +45,12 @@ const routes = [
     path: "/NXB",
     name: "NXB.add",
     component: () => import("@/views/NXBAdd.vue"),
+    props: true, // Truyền các biến trong $route.params vào làm props
+  },
+  {
+    path: "/",
+    name: "signup",
+    component: () => import("@/views/SignUp.vue"),
     props: true, // Truyền các biến trong $route.params vào làm props
   },
 ];

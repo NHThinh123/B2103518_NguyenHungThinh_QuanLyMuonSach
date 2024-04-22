@@ -151,8 +151,7 @@ export default {
       this.$emit("submit:book", this.bookLocal);
     },
     deleteBook() {
-      // this.$emit("delete:book", this.bookLocal.id);
-      console.log(this.NXBs);
+      this.$emit("delete:book", this.bookLocal.id);
     },
   },
 };

@@ -24,7 +24,9 @@
       </nav>
     </div>
     <div class="header-right">
-      <button class="info-icon">Ảnh</button>
+      <router-link :to="{ name: 'login' }">
+        <p class="nav-custom-item sign-out">Đăng Xuất</p>
+      </router-link>
     </div>
   </div>
 </template>

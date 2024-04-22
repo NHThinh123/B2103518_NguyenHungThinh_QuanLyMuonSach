@@ -8,6 +8,7 @@ class UserService {
   extractUserData(payload) {
     const user = {
       userId: payload.userId,
+      password: payload.password,
       userName: payload.userName,
       ngaySinh: payload.ngaySinh,
       gioiTinh: payload.gioiTinh,

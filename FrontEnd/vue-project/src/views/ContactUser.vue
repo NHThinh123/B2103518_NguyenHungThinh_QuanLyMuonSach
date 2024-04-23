@@ -5,27 +5,17 @@
   </div>
 
   <div class="row">
-    <div class="mt-3 col-md-6">
-      <h4>Kho sách</h4>
-      <BookList
+    <div class="mt-3">
+      <h4>Sách có thể mượn</h4>
+      <BookListCard
         v-if="filteredBooksCount > 0"
         :books="filteredBooks"
         v-model:activeIndex="activeIndex"
-      />
+      ></BookListCard>
       <p v-else>Hiện tại chưa có quyển sách nào để mượn</p>
-      <div class="mt-3 row justify-content-around align-items-center gap-3">
-        <button class="btn btn-sm btn-primary" @click="refreshList()">
-          Làm mới
-        </button>
-        <button class="btn btn-sm btn-success" @click="goToAddBook()">
-          Thêm mới
-        </button>
-        <button class="btn btn-sm btn-danger" @click="removeAllBooks()">
-          Xóa tất cả
-        </button>
-      </div>
     </div>
-    <div class="mt-3 col-md-6">
+
+    <!-- <div class="mt-3 col-md-6">
       <div v-if="activeBook">
         <h4>Thông tin sách</h4>
         <BookCard :book="activeBook" />
@@ -38,7 +28,7 @@
           <span class="mt-2 badge badge-warning"> Chỉnh sửa </span>
         </router-link>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -49,13 +39,14 @@ import BookList from "@/components/BookList.vue";
 import bookService from "@/services/book.service";
 import AppHeader from "@/components/AppHeader.vue";
 import userService from "@/services/user.service";
-
+import BookListCard from "@/components/BookListCard.vue";
 export default {
   components: {
     BookCard,
     InputSearch,
     BookList,
     AppHeader,
+    BookListCard,
   },
   props: {
     id: { type: String, required: true },

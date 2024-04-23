@@ -18,9 +18,15 @@ const routes = [
     props: true, // Truyền các biến trong $route.params vào làm props
   },
   {
-    path: "/book",
+    path: "/home/:id",
     name: "contactbook",
     component: () => import("@/views/ContactBook.vue"),
+    props: true, // Truyền các biến trong $route.params vào làm props
+  },
+  {
+    path: "/home/:id",
+    name: "contactuser",
+    component: () => import("@/views/ContactUser.vue"),
     props: true, // Truyền các biến trong $route.params vào làm props
   },
   {
@@ -30,7 +36,7 @@ const routes = [
     props: true, // Truyền các biến trong $route.params vào làm props
   },
   {
-    path: "/NXB",
+    path: "/home/:id",
     name: "contactNXB",
     component: () => import("@/views/ContactNXB.vue"),
     props: true, // Truyền các biến trong $route.params vào làm props

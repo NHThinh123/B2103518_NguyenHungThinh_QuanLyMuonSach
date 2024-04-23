@@ -1,4 +1,5 @@
 <template>
+  <AppHeader :user="user"></AppHeader>
   <div>
     <InputSearch v-model="searchText" />
   </div>
@@ -12,7 +13,7 @@
         v-model:activeIndex="activeIndex"
       />
       <p v-else>Hiện tại chưa có NXB nào</p>
-      <div class="mt-3 row justify-content-around align-items-center">
+      <div class="mt-3 row justify-content-around align-items-center gap-3">
         <button class="btn btn-sm btn-primary" @click="refreshList()">
           Làm mới
         </button>
@@ -48,6 +49,8 @@ import NXBList from "@/components/NXBList.vue";
 import NXBService from "@/services/nxb.service";
 import AppHeader from "@/components/AppHeader.vue";
 
+import userService from "@/services/user.service";
+
 export default {
   components: {
     NXBCard,
@@ -55,11 +58,15 @@ export default {
     NXBList,
     AppHeader,
   },
+  props: {
+    id: { type: String, required: true },
+  },
   data() {
     return {
       NXBs: [],
       activeIndex: -1,
       searchText: "",
+      user: null,
     };
   },
   watch: {
@@ -119,9 +126,15 @@ export default {
     goToAddNXB() {
       this.$router.push({ name: "NXB.add" });
     },
+    async getUser(id) {
+      this.user = await userService.findOneUser(id);
+    },
   },
   mounted() {
     this.refreshList();
+  },
+  created() {
+    this.getUser(this.id);
   },
 };
 </script>

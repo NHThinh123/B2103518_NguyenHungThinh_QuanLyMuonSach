@@ -31,7 +31,7 @@ a,
 .header-left {
   display: flex;
   flex-direction: column;
-  row-gap: 20px;
+  row-gap: 10px;
 }
 .navbar-custom-brand {
   font-weight: 700;
@@ -72,6 +72,7 @@ a,
   background-color: #00000000;
   color: #f4ce14;
   border: solid 1px #f4ce14;
+  height: 40px;
 }
 .btn-search:hover {
   background-color: #f4ce14;
@@ -82,4 +83,18 @@ a,
 }
 .sign-out {
   padding-top: 90px;
+}
+.book-list-card {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.book-card {
+  width: 200px;
+}
+.card-body-custom {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
 }

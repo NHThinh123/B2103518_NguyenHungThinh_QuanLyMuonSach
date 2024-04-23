@@ -10,7 +10,6 @@ export default {
 <template>
   <div id="app">
     <div class="container mt-3">
-      <AppHeader></AppHeader>
       <router-view />
     </div>
   </div>

@@ -38,14 +38,30 @@ export default {
     },
     async checkUser() {
       let confirm = 0;
+      let iUser = -1;
       for (let i = 0; i <= this.listUser.length; i++) {
         if (
           this.listUser[i].userId == this.user.userId &&
           this.listUser[i].password == this.user.password
         ) {
           confirm = 1;
+          iUser = i;
           this.message = "đăng nhập thành công";
-          await this.$router.push({ name: "contactbook" });
+          if (this.listUser[iUser].laNhanVien) {
+            await this.$router.push({
+              name: "contactbook",
+              params: {
+                id: this.listUser[iUser]._id,
+              },
+            });
+          } else {
+            await this.$router.push({
+              name: "contactuser",
+              params: {
+                id: this.listUser[iUser]._id,
+              },
+            });
+          }
         } else {
           this.message = "Đăng nhập thất bại";
         }

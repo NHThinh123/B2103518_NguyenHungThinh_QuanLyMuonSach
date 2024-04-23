@@ -56,7 +56,7 @@ export default {
       }
     },
     async deleteBook(data) {
-      if (confirm("Ban muon xoa lien he nay?")) {
+      if (confirm("Ban muon xoa ?")) {
         try {
           await bookService.deleteBook(this.book._id);
           this.$router.push({ name: "contactbook" });
